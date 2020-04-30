@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router()
------
+
 const User = require('../models/User');
------
+
 router.get('/', (req, res) => {
+
     User.find()
         .then(users => res.json(users))
         .catch(err => console.log(err))
 })
------
+
 router.post('/', (req, res) => {
     const { name, email } = req.body;
     const newUser = new User({
@@ -23,4 +24,4 @@ router.post('/', (req, res) => {
             "message": "Error creating account"
         }))
 })
-module.exports = router 
+module.exports = router
